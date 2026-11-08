@@ -1,0 +1,1597 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ریاضی‌لند</title>
+<link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet">
+<style>
+:root{--p:#6366f1;--p2:#8b5cf6;--a:#ec4899;--g:#10b981;--r:#ef4444;--am:#f59e0b;
+--bg:#f5f3ff;--card:#fff;--tx:#1e1b4b;--mu:#6b7280;--bd:#e9e5ff;
+--grad:linear-gradient(135deg,#6366f1,#8b5cf6 50%,#ec4899);
+--sh:0 2px 12px rgba(99,102,241,.08);--sh2:0 8px 28px rgba(99,102,241,.15);--rad:16px}
+[data-theme=dark]{--bg:#0f0d1c;--card:#1a1730;--tx:#e8e6f5;--mu:#9b98b0;--bd:#2a2740;
+--sh:0 2px 12px rgba(0,0,0,.3);--sh2:0 8px 28px rgba(0,0,0,.5)}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Vazirmatn,sans-serif}
+body{background:var(--bg);color:var(--tx);min-height:100vh;line-height:1.6;transition:.3s}
+button{cursor:pointer;border:none;font-family:inherit;background:none;color:inherit}
+input,select,textarea{font-family:inherit;width:100%;padding:10px 14px;border:2px solid var(--bd);
+border-radius:12px;background:var(--card);color:var(--tx);font-size:.9rem}
+input:focus,select:focus,textarea:focus{border-color:var(--p);outline:none}
+a{cursor:pointer;color:var(--p);text-decoration:none;font-weight:600}
+.btn{padding:10px 18px;border-radius:12px;font-weight:700;font-size:.88rem;transition:.2s;
+display:inline-flex;align-items:center;justify-content:center;gap:6px;white-space:nowrap}
+.btn:hover{transform:translateY(-1px)}
+.bp{background:var(--grad);color:#fff;box-shadow:0 6px 16px rgba(99,102,241,.3)}
+.bs{background:var(--bg);color:var(--tx);border:1.5px solid var(--bd)}
+.bd{background:var(--r);color:#fff}
+.bsm{padding:6px 12px;font-size:.76rem;border-radius:9px}
+.bb{width:100%}
+.bic{padding:8px 11px;font-size:1rem;border-radius:10px;background:var(--bg);border:1px solid var(--bd)}
+.auth{min-height:100vh;display:flex;align-items:center;justify-content:center;
+background:linear-gradient(135deg,#eef2ff,#f5f3ff 50%,#fce7f3);padding:20px}
+[data-theme=dark] .auth{background:linear-gradient(135deg,#15132a,#1a1733 50%,#2a1830)}
+.acc{background:var(--card);border-radius:24px;padding:40px 32px;max-width:430px;width:100%;
+box-shadow:var(--sh2);text-align:center}
+.acc h1{font-size:1.8rem;font-weight:900;background:var(--grad);-webkit-background-clip:text;
+background-clip:text;color:transparent;margin-bottom:4px}
+.acc .sub{color:var(--mu);font-size:.85rem;margin-bottom:20px}
+.acc .logo{font-size:3rem;margin-bottom:6px;display:inline-block}
+.acc label{display:block;text-align:right;font-size:.8rem;font-weight:700;color:var(--mu);margin:12px 0 5px}
+.alert{padding:10px 14px;border-radius:10px;font-size:.83rem;margin-top:10px;
+text-align:right;font-weight:600}
+.aer{background:#fee2e2;color:#991b1b}
+.ain{background:#dbeafe;color:#1e40af}
+.app{display:flex;min-height:100vh}
+.sb{width:250px;background:var(--card);border-left:1px solid var(--bd);display:flex;
+flex-direction:column;padding:18px 12px;position:fixed;right:0;top:0;height:100vh;
+z-index:50;transition:transform .3s;box-shadow:var(--sh);overflow-y:auto}
+.sb.open{transform:translateX(0)}
+.brand{font-size:1.3rem;font-weight:900;padding:6px 12px 18px;background:var(--grad);
+-webkit-background-clip:text;background-clip:text;color:transparent}
+.ng{margin-bottom:6px}
+.ngt{font-size:.68rem;font-weight:800;color:var(--mu);padding:6px 14px 4px}
+.ni{display:flex;align-items:center;gap:10px;padding:10px 13px;border-radius:11px;
+color:var(--mu);font-weight:600;transition:.2s;margin-bottom:2px;font-size:.86rem;cursor:pointer}
+.ni:hover{background:var(--bg);color:var(--p)}
+.ni.active{background:var(--grad);color:#fff}
+.ni .em{font-size:1rem;width:20px;text-align:center}
+.ubox{margin-top:auto;padding:10px;background:var(--bg);border-radius:12px;
+display:flex;align-items:center;gap:8px;font-size:.8rem;border:1px solid var(--bd)}
+.ubox .av{font-size:1.4rem;width:32px;text-align:center}
+.ubox .inf{flex:1;overflow:hidden}
+.ubox .inf b{display:block;font-size:.78rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ubox .inf small{font-size:.65rem;color:var(--mu)}
+.mn{flex:1;margin-right:250px;padding:18px 24px 40px;min-height:100vh}
+.tb{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;
+gap:10px;flex-wrap:wrap}
+.tb h1{font-size:1.35rem;font-weight:900}
+.tb .ac{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+.mtg{display:none;background:var(--card);padding:8px 12px;border-radius:10px;
+box-shadow:var(--sh);font-size:1.1rem}
+.card{background:var(--card);border-radius:var(--rad);padding:18px;box-shadow:var(--sh);
+margin-bottom:14px;border:1px solid var(--bd)}
+.ct{font-size:1rem;font-weight:800;margin-bottom:12px;display:flex;
+align-items:center;gap:8px;flex-wrap:wrap}
+.ct .ac{margin-right:auto;display:flex;gap:6px;flex-wrap:wrap}
+.gr{display:grid;gap:12px}
+.g2{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.g3{grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+.g4{grid-template-columns:repeat(auto-fit,minmax(160px,1fr))}
+.st{background:var(--card);border-radius:var(--rad);padding:16px;box-shadow:var(--sh);
+border:1px solid var(--bd);transition:.2s}
+.st:hover{transform:translateY(-2px);box-shadow:var(--sh2)}
+.st .em{font-size:1.5rem;display:block;margin-bottom:4px}
+.st .v{font-size:1.6rem;font-weight:900;margin-bottom:2px}
+.st .l{font-size:.76rem;color:var(--mu);font-weight:600}
+.c1 .v{color:var(--p)}.c2 .v{color:var(--a)}.c3 .v{color:var(--am)}.c4 .v{color:var(--g)}
+.tw{overflow-x:auto}
+.tbl{width:100%;border-collapse:collapse;font-size:.83rem;min-width:480px}
+.tbl th{text-align:right;padding:10px 8px;font-weight:700;color:var(--mu);
+font-size:.74rem;border-bottom:2px solid var(--bd);white-space:nowrap}
+.tbl td{padding:10px 8px;border-bottom:1px solid var(--bd)}
+.tbl tbody tr:hover{background:var(--bg)}
+.pill{display:inline-block;padding:3px 9px;border-radius:8px;font-weight:800;
+font-size:.72rem;white-space:nowrap}
+.ex{background:#d1fae5;color:#065f46}.go{background:#dbeafe;color:#1e40af}
+.mi{background:#fef3c7;color:#92400e}.lo{background:#fee2e2;color:#991b1b}
+.in{background:#e0e7ff;color:#3730a3}.su{background:#d1fae5;color:#065f46}
+.wa{background:#fef3c7;color:#92400e}
+[data-theme=dark] .ex,[data-theme=dark] .su{background:#065f46;color:#d1fae5}
+[data-theme=dark] .go{background:#1e3a8a;color:#dbeafe}
+[data-theme=dark] .mi,[data-theme=dark] .wa{background:#78350f;color:#fde68a}
+[data-theme=dark] .lo{background:#7f1d1d;color:#fecaca}
+[data-theme=dark] .in{background:#312e81;color:#c7d2fe}
+.empty{text-align:center;padding:30px 14px;color:var(--mu)}
+.empty .ei{font-size:2rem;margin-bottom:6px;opacity:.6}
+.mbg{position:fixed;inset:0;background:rgba(15,14,26,.65);backdrop-filter:blur(6px);
+z-index:100;display:flex;align-items:center;justify-content:center;padding:14px}
+.modal{background:var(--card);border-radius:20px;padding:22px;max-width:520px;width:100%;
+max-height:90vh;overflow-y:auto;box-shadow:var(--sh2)}
+.modal h3{font-size:1.1rem;margin-bottom:12px}
+.modal label{display:block;font-size:.78rem;font-weight:700;color:var(--mu);margin:10px 0 4px}
+.mac{display:flex;gap:8px;margin-top:16px;flex-wrap:wrap}
+#toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%) translateY(120px);
+background:var(--tx);color:var(--card);padding:11px 20px;border-radius:12px;font-weight:700;
+box-shadow:var(--sh2);transition:.3s;z-index:200;opacity:0;font-size:.85rem;max-width:90vw}
+#toast.show{transform:translateX(-50%) translateY(0);opacity:1}
+#toast.s{background:var(--g);color:#fff}
+#toast.e{background:var(--r);color:#fff}
+.hero{background:var(--grad);border-radius:20px;padding:22px;color:#fff;
+position:relative;overflow:hidden;margin-bottom:16px}
+.hero::before{content:'';position:absolute;top:-80px;right:-60px;width:300px;height:300px;
+background:radial-gradient(circle,rgba(255,255,255,.2),transparent 70%);border-radius:50%}
+.hin{position:relative;z-index:2;display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+.hav{font-size:3rem;width:70px;height:70px;display:flex;align-items:center;
+justify-content:center;background:rgba(255,255,255,.2);border-radius:20px;
+border:2px solid rgba(255,255,255,.4);cursor:pointer;flex-shrink:0}
+.hinf{flex:1;min-width:180px}
+.hinf h2{font-size:1.4rem;font-weight:900;margin-bottom:2px}
+.hinf .sub{font-size:.8rem;opacity:.9;margin-bottom:10px}
+.xbw{margin-top:10px}
+.xbl{display:flex;justify-content:space-between;font-size:.72rem;margin-bottom:5px;
+opacity:.9;font-weight:700}
+.xb{height:10px;background:rgba(255,255,255,.25);border-radius:99px;overflow:hidden}
+.xbf{height:100%;background:linear-gradient(90deg,#fbbf24,#f59e0b,#f97316);
+border-radius:99px;transition:width .8s}
+.mc{background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:12px}
+.mc.done{opacity:.7;border-color:var(--g)}
+.mh{display:flex;align-items:flex-start;gap:8px;margin-bottom:6px}
+.mi2{font-size:1.3rem;flex-shrink:0}
+.minf{flex:1}
+.minf b{display:block;font-size:.82rem;margin-bottom:2px}
+.minf small{font-size:.68rem;color:var(--mu)}
+.mrw{font-size:.7rem;font-weight:800;color:var(--am);background:var(--bg);
+padding:3px 7px;border-radius:6px;white-space:nowrap}
+.mp{height:6px;background:var(--bg);border-radius:99px;overflow:hidden;margin-top:4px}
+.mpf{height:100%;background:var(--grad);transition:width .5s}
+.mpf.done{background:var(--g)}
+.qt{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:16px;
+transition:.2s;cursor:pointer;text-align:center;box-shadow:var(--sh)}
+.qt:hover{transform:translateY(-3px);box-shadow:var(--sh2);border-color:var(--p)}
+.qt .qti{font-size:2rem;margin-bottom:6px;display:block}
+.qt b{display:block;font-size:.88rem;margin-bottom:2px}
+.qt small{font-size:.68rem;color:var(--mu)}
+.bcard{background:var(--card);border:2px solid var(--bd);border-radius:14px;
+padding:14px 10px;text-align:center;transition:.2s}
+.bcard.earned{border-color:var(--am);background:linear-gradient(135deg,#fffbeb,#fef3c7)}
+[data-theme=dark] .bcard.earned{background:linear-gradient(135deg,var(--card),#2a2008)}
+.bcard.locked{opacity:.45;filter:grayscale(1)}
+.bcard .bi{font-size:2rem;margin-bottom:6px;display:block}
+.bcard b{display:block;font-size:.8rem;margin-bottom:3px}
+.bcard small{font-size:.65rem;color:var(--mu);line-height:1.3}
+.pod{display:flex;align-items:flex-end;justify-content:center;gap:10px;
+margin:16px 0;padding:16px;background:var(--bg);border-radius:14px;flex-wrap:wrap}
+.pst{text-align:center;display:flex;flex-direction:column;align-items:center;gap:6px}
+.pav{font-size:1.8rem;width:50px;height:50px;display:flex;align-items:center;
+justify-content:center;background:var(--card);border-radius:50%;
+border:3px solid;box-shadow:var(--sh)}
+.pnm{font-size:.72rem;font-weight:700;max-width:80px;overflow:hidden;
+text-overflow:ellipsis;white-space:nowrap}
+.psc{font-size:.68rem;color:var(--mu);font-weight:700}
+.pb{background:var(--card);border-radius:8px 8px 0 0;display:flex;
+align-items:center;justify-content:center;font-size:1.4rem;font-weight:900;
+box-shadow:var(--sh);border:2px solid;border-bottom:none}
+.p1 .pb{height:85px;background:linear-gradient(180deg,#fbbf24,#f59e0b);
+color:#fff;border-color:#f59e0b;width:85px}
+.p2 .pb{height:65px;background:linear-gradient(180deg,#e5e7eb,#9ca3af);
+color:#fff;border-color:#9ca3af;width:75px}
+.p3 .pb{height:52px;background:linear-gradient(180deg,#fbbf24,#d97706);
+color:#fff;border-color:#d97706;width:70px;opacity:.85}
+.p1 .pav{border-color:#f59e0b;width:60px;height:60px;font-size:2.2rem}
+.lrow{display:flex;align-items:center;gap:10px;padding:10px;border-radius:10px;
+transition:.2s;border:1px solid transparent}
+.lrow:hover{background:var(--bg)}
+.lrow.me{background:var(--bg);border:2px solid var(--p)}
+.lr{width:32px;height:32px;border-radius:50%;background:var(--bg);
+display:flex;align-items:center;justify-content:center;font-weight:900;
+font-size:.8rem;flex-shrink:0;border:2px solid var(--bd)}
+.lr.t1{background:linear-gradient(135deg,#fbbf24,#f59e0b);color:#fff;border-color:#f59e0b}
+.lr.t2{background:linear-gradient(135deg,#e5e7eb,#9ca3af);color:#fff;border-color:#9ca3af}
+.lr.t3{background:linear-gradient(135deg,#d97706,#b45309);color:#fff;border-color:#d97706}
+.lnm{flex:1;font-weight:700;font-size:.86rem}
+.llg{font-size:.68rem;color:var(--mu)}
+.lxp{font-weight:900;color:var(--p);font-size:.86rem}
+.gar{background:var(--grad);border-radius:20px;padding:26px;color:#fff;text-align:center;
+position:relative;overflow:hidden;box-shadow:var(--sh2);max-width:720px;margin:0 auto}
+.gar::before{content:'';position:absolute;top:-40%;right:-20%;width:360px;height:360px;
+background:rgba(255,255,255,.1);border-radius:50%}
+.ghud{display:flex;justify-content:space-around;margin-bottom:20px;
+position:relative;z-index:2;flex-wrap:wrap;gap:8px}
+.hi{text-align:center;min-width:55px}
+.hi .hl{font-size:.7rem;opacity:.85;margin-bottom:2px;font-weight:700}
+.hi .hv{font-size:1.3rem;font-weight:900}
+.geq{font-size:2.2rem;font-weight:900;margin:20px 0;position:relative;z-index:2;
+min-height:50px;display:flex;align-items:center;justify-content:center}
+.gopts{display:grid;grid-template-columns:1fr 1fr;gap:10px;position:relative;z-index:2}
+.gopt{padding:16px;border-radius:12px;background:rgba(255,255,255,.15);
+border:2px solid rgba(255,255,255,.3);color:#fff;font-size:1.2rem;font-weight:900;
+transition:.2s;cursor:pointer}
+.gopt:hover{background:rgba(255,255,255,.3)}
+.gopt.correct{background:var(--g);border-color:#fff}
+.gopt.wrong{background:var(--r);border-color:#fff}
+.gopt:disabled{cursor:not-allowed}
+.gcard{background:var(--card);border:2px solid var(--bd);border-radius:14px;
+padding:18px;transition:.2s;cursor:pointer;text-align:center}
+.gcard:hover{border-color:var(--p);transform:translateY(-3px);box-shadow:var(--sh2)}
+.gcard .gi{font-size:2rem;margin-bottom:6px}
+.gcard h4{font-size:.95rem;margin-bottom:4px}
+.gcard p{font-size:.72rem;color:var(--mu);line-height:1.5;min-height:32px}
+.qs{background:var(--card);border-radius:18px;padding:22px;box-shadow:var(--sh2);
+max-width:700px;margin:0 auto;border:1px solid var(--bd)}
+.qp{height:7px;background:var(--bg);border-radius:99px;overflow:hidden;margin-bottom:16px}
+.qpf{height:100%;background:var(--grad);transition:width .4s}
+.qtx{font-size:1.05rem;font-weight:800;margin-bottom:16px;line-height:1.6}
+.qo{display:grid;gap:8px}
+.qopt{padding:12px 16px;border:2px solid var(--bd);border-radius:12px;
+text-align:right;font-size:.9rem;font-weight:600;transition:.2s;background:var(--card);
+display:flex;align-items:center;gap:8px;cursor:pointer}
+.qopt:hover:not(.locked){border-color:var(--p);background:var(--bg)}
+.qopt .lt{width:26px;height:26px;border-radius:7px;background:var(--bg);
+display:flex;align-items:center;justify-content:center;font-weight:900;
+color:var(--p);flex-shrink:0;font-size:.78rem}
+.qopt.correct{background:#d1fae5;border-color:var(--g);color:#065f46}
+.qopt.wrong{background:#fee2e2;border-color:var(--r);color:#991b1b}
+.qopt.locked{cursor:not-allowed}
+[data-theme=dark] .qopt.correct{background:#065f46;color:#d1fae5}
+[data-theme=dark] .qopt.wrong{background:#7f1d1d;color:#fecaca}
+.qbi{background:var(--bg);border:1px solid var(--bd);border-radius:10px;
+padding:12px;margin-bottom:8px}
+.qbh{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.qbh b{font-size:.82rem}
+.orow{display:flex;gap:6px;align-items:center;margin-bottom:5px}
+.orow input[type=radio]{width:18px;height:18px;padding:0;flex-shrink:0;cursor:pointer}
+.orow input[type=text]{flex:1}
+.fi{display:flex;align-items:center;gap:10px;padding:10px;border:1px solid var(--bd);
+border-radius:10px;margin-bottom:6px;background:var(--bg)}
+.fi .fic{font-size:1.4rem;flex-shrink:0}
+.fi .fii{flex:1;overflow:hidden}
+.fi .fii b{display:block;font-size:.85rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.fi .fii small{font-size:.68rem;color:var(--mu)}
+.ag{display:grid;grid-template-columns:repeat(auto-fill,minmax(50px,1fr));
+gap:8px;margin-top:8px}
+.ao{font-size:1.6rem;width:100%;aspect-ratio:1;background:var(--bg);
+border:2px solid var(--bd);border-radius:10px;display:flex;
+align-items:center;justify-content:center;cursor:pointer}
+.ao:hover{border-color:var(--p);transform:scale(1.08)}
+.ao.sel{border-color:var(--p);background:var(--grad);color:#fff}
+.cbar{margin-bottom:10px}
+.cbh{display:flex;justify-content:space-between;font-size:.8rem;margin-bottom:4px;font-weight:600}
+.cbt{height:7px;background:var(--bg);border-radius:99px;overflow:hidden}
+.cbf{height:100%;background:var(--grad);border-radius:99px;transition:width .5s}
+#resetBtn{position:fixed;bottom:10px;left:10px;background:var(--r);color:#fff;
+padding:8px 14px;border-radius:10px;font-size:.78rem;font-weight:700;z-index:99;
+box-shadow:var(--sh2);opacity:.75;transition:.2s}
+#resetBtn:hover{opacity:1;transform:scale(1.05)}
+#errBox{position:fixed;inset:0;background:rgba(15,14,26,.9);z-index:300;
+display:flex;align-items:center;justify-content:center;padding:20px}
+#errBox .modal{max-width:600px;background:#fff;color:#1e1b4b;text-align:right;padding:24px}
+#errBox h2{color:var(--r);margin-bottom:10px;font-size:1.2rem}
+#errBox pre{background:#f5f5f5;padding:10px;border-radius:8px;overflow:auto;
+font-size:11px;direction:ltr;text-align:left;max-height:200px;margin:10px 0}
+#errBox button{background:var(--p);color:#fff;padding:10px 20px;border-radius:10px;
+font-weight:700;margin-top:8px;cursor:pointer}
+@media(max-width:900px){
+.sb{transform:translateX(100%)}.mn{margin-right:0;padding:14px}.mtg{display:block}
+.geq{font-size:1.8rem}.gopt{font-size:1rem;padding:12px}
+.qtx{font-size:.95rem}.card{padding:14px}
+.tb h1{font-size:1.15rem}
+.acc{padding:28px 20px}
+.hero{padding:16px}.hav{width:58px;height:58px;font-size:2.4rem}
+.hinf h2{font-size:1.15rem}
+.pod{gap:6px;padding:12px}
+.p1 .pb{width:70px;height:70px}.p2 .pb{width:60px;height:50px}.p3 .pb{width:56px;height:42px}
+.pav{width:44px;height:44px;font-size:1.6rem}
+.p1 .pav{width:50px;height:50px;font-size:1.9rem}
+}
+</style>
+</head>
+<body>
+<div id="root"></div>
+<div id="toast"></div>
+<script>
+/* === ERROR UI === */
+function showError(msg, stack){
+  const box = document.createElement('div');
+  box.id = 'errBox';
+  box.innerHTML = '<div class="modal"><h2>⚠️ خطا</h2><p>'+esc(msg)+'</p>'+
+    (stack?'<pre>'+esc(stack)+'</pre>':'')+
+    '<button onclick="resetAll()">🔄 پاک کردن داده‌ها و تلاش مجدد</button></div>';
+  document.body.appendChild(box);
+}
+async function resetAll(){
+  if(!confirm('همه داده‌ها (دانش‌آموزان، نمرات، تکالیف، آزمون‌ها) پاک می‌شود. مطمئنی؟')) return;
+  try{ (await dbPromise)?.close(); }catch(e){}
+  try{ indexedDB.deleteDatabase('riaziland'); }catch(e){}
+  try{ localStorage.clear(); }catch(e){}
+  location.reload();
+}
+window.addEventListener('error', e => {
+  console.error('ERR:', e.error || e.message);
+  if (!document.getElementById('root').innerHTML.trim()) {
+    showError(e.error?.message || e.message, e.error?.stack);
+  }
+});
+window.addEventListener('unhandledrejection', e => {
+  console.error('UNH:', e.reason);
+  if (!document.getElementById('root').innerHTML.trim()) {
+    showError(e.reason?.message || e.reason, e.reason?.stack);
+  }
+});
+
+/* === UTILS === */
+const $ = s => document.querySelector(s);
+const $$ = s => [...document.querySelectorAll(s)];
+const esc = s => String(s??'').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const fmt = n => String(n??'').replace(/\d/g, d => '۰۱۲۳۴۵۶۷۸۹'[d]);
+const fdate = ts => ts ? new Date(ts).toLocaleDateString('fa-IR') : '—';
+const now = () => Date.now();
+const dl = d => d ? fdate(d) : '—';
+const uid = () => Date.now().toString(36)+Math.random().toString(36).slice(2,8);
+const randInt = (a,b) => Math.floor(Math.random()*(b-a+1))+a;
+const todayStart = () => { const d = new Date(); d.setHours(0,0,0,0); return d.getTime(); };
+const weekStart = () => todayStart() - 6*86400000;
+
+/* === CURRICULUM === */
+const CURR = {
+  7:{n:'هفتم',ch:[['c7-1','راهبردهای حل مسئله'],['c7-2','عددهای صحیح'],['c7-3','جبر و معادله'],['c7-4','هندسه و استدلال'],['c7-5','شمارنده‌ها و عددهای اول'],['c7-6','سطح و حجم'],['c7-7','توان و جذر'],['c7-8','بردار و مختصات'],['c7-9','آمار و احتمال']]},
+  8:{n:'هشتم',ch:[['c8-1','عددهای صحیح و گویا'],['c8-2','عددهای اول'],['c8-3','چندضلعی‌ها'],['c8-4','جبر و معادله'],['c8-5','بردار و مختصات'],['c8-6','مثلث'],['c8-7','توان و جذر'],['c8-8','آمار و احتمال']]},
+  9:{n:'نهم',ch:[['c9-1','مجموعه‌ها'],['c9-2','عددهای حقیقی'],['c9-3','استدلال و اثبات در هندسه'],['c9-4','توان و ریشه'],['c9-5','عبارت‌های جبری'],['c9-6','خط و معادله‌های خطی'],['c9-7','عبارت‌های گویا'],['c9-8','حجم و مساحت']]}
+};
+const chT = id => { for(const g in CURR) for(const[c,t]of CURR[g].ch) if(c===id) return CURR[g].n+' - '+t; return '—'; };
+const chS = id => { for(const g in CURR) for(const[c,t]of CURR[g].ch) if(c===id) return t; return '—'; };
+const chG = id => +id.split('-')[0].replace('c','');
+const chO = () => [7,8,9].flatMap(g => CURR[g].ch.map(([id,t])=>`<option value="${id}">${CURR[g].n} - ${t}</option>`)).join('');
+
+/* === DB === */
+let dbPromise = null;
+function openDB(){
+  if(dbPromise) return dbPromise;
+  dbPromise = new Promise((res, rej) => {
+    const tryOpen = (ver) => {
+      let r;
+      try { r = indexedDB.open('riaziland', ver); }
+      catch(e){ return rej(e); }
+      r.onupgradeneeded = e => {
+        const db = e.target.result;
+        const schema = {
+          users:['username','role'], grades:['studentId','chapterId'],
+          assignments:['grade','chapterId'], submissions:['assignmentId','studentId'],
+          quizzes:['grade','chapterId'], attempts:['quizId','studentId'],
+          resources:['grade','chapterId'], gameScores:['studentId','gameType'],
+          sessions:[], activities:['userId','type']
+        };
+        for(const n in schema){
+          if(!db.objectStoreNames.contains(n)){
+            const s = db.createObjectStore(n,{keyPath:'id',autoIncrement:true});
+            schema[n].forEach(idx => {
+              try{ s.createIndex(idx,idx,{unique:idx==='username'}); }catch(e){}
+            });
+          }
+        }
+      };
+      r.onsuccess = () => res(r.result);
+      r.onerror = () => {
+        const err = r.error;
+        if(err?.name === 'VersionError'){
+          const del = indexedDB.deleteDatabase('riaziland');
+          del.onsuccess = () => { dbPromise = null; tryOpen((err.newVersion||100)+1); };
+          del.onerror = () => rej(err);
+        } else rej(err);
+      };
+      r.onblocked = () => rej(new Error('تب دیگری دیتابیس را باز کرده. همه تب‌ها را ببند.'));
+    };
+    tryOpen(100);
+  });
+  return dbPromise;
+}
+async function tx(store, mode, fn){
+  const db = await openDB();
+  return new Promise((res, rej) => {
+    const t = db.transaction(store, mode);
+    const s = t.objectStore(store);
+    let req;
+    try{ req = fn(s); }catch(e){ return rej(e); }
+    t.oncomplete = () => res(req?.result);
+    t.onerror = () => rej(t.error);
+    t.onabort = () => rej(t.error);
+  });
+}
+const DB = {
+  get:(s,i)=>tx(s,'readonly',r=>r.get(i)),
+  all:s=>tx(s,'readonly',r=>r.getAll()),
+  add:(s,d)=>tx(s,'readwrite',r=>r.add(d)),
+  put:(s,d)=>tx(s,'readwrite',r=>r.put(d)),
+  del:(s,i)=>tx(s,'readwrite',r=>r.delete(i)),
+  byIdx:(s,i,v)=>tx(s,'readonly',r=>r.index(i).getAll(v)),
+  clear:s=>tx(s,'readwrite',r=>r.clear())
+};
+
+/* === AUTH === */
+async function hash(pwd, salt){
+  const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(pwd+'::'+salt));
+  return [...new Uint8Array(buf)].map(b=>b.toString(16).padStart(2,'0')).join('');
+}
+const AUTH = {
+  async hasTeacher(){ return (await DB.byIdx('users','role','teacher')).length > 0; },
+  async regTeacher(d){
+    d.username=(d.username||'').trim().toLowerCase();
+    if(!d.username||!d.password||!d.fullName) throw new Error('همه فیلدها الزامی');
+    if(d.password.length<6) throw new Error('رمز حداقل ۶ کاراکتر');
+    if(d.username.length<3) throw new Error('نام کاربری حداقل ۳ کاراکتر');
+    if((await DB.byIdx('users','username',d.username)).length) throw new Error('نام کاربری تکراری');
+    const salt = uid(), passwordHash = await hash(d.password, salt);
+    return DB.add('users',{username:d.username,salt,passwordHash,role:'teacher',
+      fullName:d.fullName,avatar:'👨‍🏫',createdAt:now()});
+  },
+  async regStudent(d){
+    d.username=(d.username||'').trim().toLowerCase();
+    if(!d.username||!d.password||!d.fullName||!d.grade) throw new Error('همه فیلدها الزامی');
+    if(d.password.length<4) throw new Error('رمز حداقل ۴ کاراکتر');
+    if(![7,8,9].includes(+d.grade)) throw new Error('پایه نامعتبر');
+    if(d.username.length<3) throw new Error('نام کاربری حداقل ۳ کاراکتر');
+    if((await DB.byIdx('users','username',d.username)).length) throw new Error('نام کاربری تکراری');
+    const salt = uid(), passwordHash = await hash(d.password, salt);
+    return DB.add('users',{username:d.username,salt,passwordHash,role:'student',
+      fullName:d.fullName,grade:+d.grade,avatar:'🎓',createdAt:now()});
+  },
+  async login(u, p){
+    u=(u||'').trim().toLowerCase();
+    const users = await DB.byIdx('users','username',u);
+    if(!users.length) throw new Error('کاربر یافت نشد');
+    const usr = users[0];
+    if((await hash(p, usr.salt)) !== usr.passwordHash) throw new Error('رمز اشتباه');
+    await DB.clear('sessions');
+    await DB.add('sessions',{userId:usr.id,expiresAt:now()+7*24*3600*1000});
+    if(usr.role==='student'){ const had=(await getUserActs(usr.id)).some(a=>a.type==='login'&&a.createdAt>=todayStart()); await logAct(usr.id,'login',had?0:5,{}); }
+    return usr;
+  },
+  async current(){
+    const ss = await DB.all('sessions');
+    const a = ss.filter(s=>s.expiresAt>now())[0];
+    return a ? DB.get('users',a.userId) : null;
+  },
+  logout: () => DB.clear('sessions')
+};
+
+/* === XP / LEVELS === */
+const TIERS = [{n:'تازه‌کار',i:'🌱'},{n:'کاوشگر',i:'🔍'},{n:'ماجراجو',i:'⚔️'},
+  {n:'ماهر',i:'🎯'},{n:'استاد',i:'👑'},{n:'افسانه',i:'🌟'}];
+function lvlInfo(xp){
+  let lv = 1;
+  while(50*(lv+1)*lv <= xp && lv < 50) lv++;
+  const start = 50*lv*(lv-1), next = 50*(lv+1)*lv;
+  const ti = Math.min(5, Math.floor((lv-1)/3));
+  return {lv, name:TIERS[ti].n, icon:TIERS[ti].i, xp, start, next,
+    progress: Math.min(100, ((xp-start)/(next-start))*100)};
+}
+async function logAct(uid, type, xp, meta={}){
+  return DB.add('activities',{userId:uid,type,xp:xp||0,meta,createdAt:now()});
+}
+async function getUserActs(uid){ return DB.byIdx('activities','userId',uid); }
+async function getUserXP(uid){ return (await getUserActs(uid)).reduce((s,a)=>s+(a.xp||0),0); }
+async function getStreak(uid){
+  const acts = await getUserActs(uid);
+  const days = new Set(acts.filter(a=>a.type==='login').map(a=>new Date(a.createdAt).toDateString()));
+  const t = new Date(); let st = 0;
+  for(let i=0;i<365;i++){
+    const d = new Date(t); d.setDate(d.getDate()-i);
+    if(days.has(d.toDateString())) st++;
+    else if(i===0) continue; else break;
+  }
+  return st;
+}
+async function awardXP(uid, type, amount, meta={}){
+  const before = lvlInfo(await getUserXP(uid));
+  await logAct(uid, type, amount, meta);
+  const after = lvlInfo(await getUserXP(uid));
+  if(after.lv > before.lv){
+    toast(`🎉 سطح ${fmt(after.lv)}: ${after.icon} ${after.name}!`,'s');
+    confetti();
+  }
+}
+
+/* === BADGES === */
+const BADGES = [
+  {id:'first_login',i:'🌟',t:'اولین قدم',d:'ورود به سایت',c:d=>true},
+  {id:'first_quiz',i:'🎯',t:'اولین آزمون',d:'یک آزمون',c:d=>d.attempts.length>=1},
+  {id:'first_asg',i:'📝',t:'اولین تکلیف',d:'یک تکلیف',c:d=>d.subs.length>=1},
+  {id:'perfect',i:'💯',t:'نمره کامل',d:'نمره ۲۰',c:d=>d.attempts.some(a=>a.score>=19.5)},
+  {id:'quiz5',i:'🏅',t:'آزمون‌دوست',d:'۵ آزمون',c:d=>d.attempts.length>=5},
+  {id:'game5',i:'🎮',t:'بازی‌کن',d:'۵ بازی',c:d=>d.gscores.length>=5},
+  {id:'high',i:'🏆',t:'رکورددار',d:'۱۰۰+ امتیاز',c:d=>d.gscores.some(s=>s.score>=100)},
+  {id:'str3',i:'🔥',t:'استمرار ۳ روز',d:'۳ روز پیاپی',c:d=>d.streak>=3},
+  {id:'lv5',i:'🎖️',t:'ماهر',d:'سطح ۵',c:d=>d.level>=5},
+  {id:'xp500',i:'✨',t:'پرتلاش',d:'۵۰۰ XP',c:d=>d.xp>=500}
+];
+async function badgeData(uid){
+  const [attempts, subs, gscores, xp, streak] = await Promise.all([
+    DB.byIdx('attempts','studentId',uid), DB.byIdx('submissions','studentId',uid),
+    DB.byIdx('gameScores','studentId',uid), getUserXP(uid), getStreak(uid)
+  ]);
+  return {attempts, subs, gscores, xp, streak, level:lvlInfo(xp).lv};
+}
+async function evalBadges(uid){
+  const d = await badgeData(uid);
+  return BADGES.map(b => ({...b, earned: b.c(d)}));
+}
+async function checkBadges(uid){
+  const acts = await getUserActs(uid);
+  const last = acts.filter(a=>a.type==='badge_earned').pop();
+  const prev = new Set(last?.meta?.badges||[]);
+  const curr = (await evalBadges(uid)).filter(b=>b.earned).map(b=>b.id);
+  const newB = curr.filter(i=>!prev.has(i));
+  if(newB.length){
+    await logAct(uid,'badge_earned',30*newB.length,{badges:curr});
+    newB.forEach(id=>{
+      const b = BADGES.find(x=>x.id===id);
+      if(b) setTimeout(()=>toast(`${b.i} نشان: ${b.t}!`,'s'),600);
+    });
+  } else if(!last){
+    await logAct(uid,'badge_earned',0,{badges:curr});
+  }
+}
+
+/* === MISSIONS === */
+const MISSIONS = [
+  {id:'d_login',t:'ورود روزانه',d:'امروز وارد شو',i:'📅',ty:'d',tg:1,xp:5,at:'login'},
+  {id:'d_game',t:'یک بازی',d:'امروز یک بازی',i:'🎮',ty:'d',tg:1,xp:20,at:'game_complete'},
+  {id:'d_quiz',t:'آزمون روز',d:'امروز یک آزمون',i:'🎯',ty:'d',tg:1,xp:50,at:'quiz_submit'},
+  {id:'w_game',t:'۵ بازی هفته',d:'این هفته ۵ بازی',i:'🎮',ty:'w',tg:5,xp:80,at:'game_complete'}
+];
+async function getMissions(uid){
+  const acts = await getUserActs(uid);
+  const tS = todayStart(), wS = weekStart();
+  return MISSIONS.map(m => {
+    const start = m.ty==='d' ? tS : wS;
+    const cnt = acts.filter(a=>a.type===m.at && a.createdAt>=start).length;
+    return {...m, progress: Math.min(cnt,m.tg), done: cnt>=m.tg};
+  });
+}
+async function checkMissions(uid){
+  const ms = await getMissions(uid), acts = await getUserActs(uid);
+  for(const m of ms){
+    if(!m.done) continue;
+    const start = m.ty==='d' ? todayStart() : weekStart();
+    if(acts.some(a=>a.type==='mission_complete'&&a.meta?.missionId===m.id&&a.createdAt>=start)) continue;
+    await logAct(uid,'mission_complete',m.xp,{missionId:m.id,title:m.t});
+    toast(`🎯 ${m.t} (+${fmt(m.xp)} XP)`,'s');
+  }
+}
+
+/* === LEAGUES === */
+const LEAGUES = [{id:'b',n:'برنزی',i:'🥉',min:0},{id:'s',n:'نقره‌ای',i:'🥈',min:500},
+  {id:'g',n:'طلایی',i:'🥇',min:1500},{id:'d',n:'الماسی',i:'💎',min:3000}];
+const leagueFor = xp => LEAGUES.reduce((a,l)=>xp>=l.min?l:a, LEAGUES[0]);
+
+/* === STATE === */
+const ST = {user:null, view:'dashboard', quiz:null, qIdx:0, qAns:[], game:null, qb:null};
+
+/* === UI HELPERS === */
+function toast(msg, type='s'){
+  const el = $('#toast');
+  el.textContent = msg; el.className = 'show '+type;
+  clearTimeout(el._t); el._t = setTimeout(()=>el.className='',3000);
+}
+function modal(html){
+  closeModal();
+  const bg = document.createElement('div');
+  bg.className = 'mbg';
+  bg.onclick = e => e.target===bg && closeModal();
+  bg.innerHTML = `<div class="modal">${html}</div>`;
+  document.body.appendChild(bg);
+}
+function closeModal(){ $('.mbg')?.remove(); }
+function confetti(){
+  const cs = ['#6366f1','#8b5cf6','#ec4899','#06b6d4','#f59e0b','#10b981'];
+  for(let i=0;i<40;i++){
+    const c = document.createElement('div');
+    c.style.cssText = `position:fixed;top:-10px;left:${Math.random()*100}%;width:8px;height:8px;
+      background:${cs[i%cs.length]};z-index:150;pointer-events:none;
+      border-radius:${Math.random()>.5?'50%':'2px'};
+      animation:fall 2.4s linear forwards;animation-delay:${Math.random()*.5}s`;
+    const kf = document.getElementById('kf') || document.createElement('style');
+    kf.id = 'kf'; kf.textContent = '@keyframes fall{to{transform:translateY(100vh) rotate(720deg);opacity:0}}';
+    if(!kf.parentNode) document.head.appendChild(kf);
+    document.body.appendChild(c);
+    setTimeout(()=>c.remove(),3000);
+  }
+}
+function statCard(em,v,l,cls='c1'){
+  return `<div class="st ${cls}"><span class="em">${em}</span>
+    <div class="v">${typeof v==='number'?fmt(v):v}</div><div class="l">${l}</div></div>`;
+}
+function gradePill(s){
+  const n = +s; const c = n>=18?'ex':n>=15?'go':n>=10?'mi':'lo';
+  return `<span class="pill ${c}">${fmt(n)}</span>`;
+}
+function go(v){ ST.view = v; closeSidebar(); render(); }
+function openSidebar(){ $('#sidebar')?.classList.add('open'); }
+function closeSidebar(){ $('#sidebar')?.classList.remove('open'); }
+function toggleTheme(){
+  const t = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+  document.documentElement.dataset.theme = t;
+  try{ localStorage.setItem('theme', t); }catch(e){}
+  render();
+}
+async function doLogout(){
+  if(!confirm('خارج می‌شوید؟')) return;
+  await AUTH.logout(); location.reload();
+}
+
+/* === SIDEBAR === */
+function renderSidebar(){
+  const u = ST.user, isT = u.role === 'teacher';
+  const groups = isT ? [
+    {g:'مدیریت', items:[['dashboard','🏠','داشبورد'],['students','👥','دانش‌آموزان'],
+      ['grades','📊','نمرات'],['assignments','📝','تکالیف'],['quizzes','🎯','آزمون‌ها'],
+      ['library','📚','کتابخانه'],['reports','📈','گزارش‌ها']]}
+  ] : [
+    {g:'آموزش', items:[['dashboard','🏠','خانه'],['myAssignments','📝','تکالیف'],
+      ['myQuizzes','🎯','آزمون‌ها'],['library','📚','کتابخانه'],['myGrades','📊','کارنامه']]},
+    {g:'سرگرمی', items:[['games','🎮','بازی'],['leaderboard','🏆','لیگ'],
+      ['badges','🎖️','افتخارات']]}
+  ];
+  return `<aside class="sb" id="sidebar">
+    <div class="brand">🎯 ریاضی‌لند</div>
+    ${groups.map(grp => `<div class="ng">
+      <div class="ngt">${grp.g}</div>
+      ${grp.items.map(([v,e,t]) => `<a class="ni ${ST.view===v?'active':''}" onclick="go('${v}')">
+        <span class="em">${e}</span><span>${t}</span></a>`).join('')}
+    </div>`).join('')}
+    <div class="ubox">
+      <span class="av">${esc(u.avatar||'👤')}</span>
+      <div class="inf"><b>${esc(u.fullName)}</b>
+        <small>${isT?'معلم':'پایه '+fmt(u.grade)}</small></div>
+      <button class="bic" onclick="toggleTheme()">${document.documentElement.dataset.theme==='dark'?'☀️':'🌙'}</button>
+      <button class="bic" onclick="doLogout()">🚪</button>
+    </div>
+  </aside>`;
+}
+
+/* === RENDER === */
+async function render(){
+  const u = ST.user;
+  if(!u) return renderAuth();
+  try{
+    const view = VIEWS[ST.view] || VIEWS.dashboard;
+    const html = await view(u);
+    $('#root').innerHTML = `<div class="app">
+      ${renderSidebar()}
+      <main class="mn">
+        <div class="tb">
+          <div style="display:flex;align-items:center;gap:8px">
+            <button class="mtg" onclick="openSidebar()">☰</button>
+            <h1>${html.title}</h1>
+          </div>
+          <div class="ac">${html.actions||''}
+            <div class="pill in">📅 ${fdate(now())}</div>
+          </div>
+        </div>
+        ${html.body}
+      </main>
+    </div>`;
+  } catch(e){
+    console.error('Render error:', e);
+    $('#root').innerHTML = `<div style="padding:40px;text-align:center">
+      <h2 style="color:var(--r)">خطا در نمایش صفحه</h2>
+      <p style="margin:10px 0">${esc(e.message)}</p>
+      <button class="btn bp" onclick="location.reload()">🔄 رفرش</button>
+    </div>`;
+  }
+}
+
+/* === AUTH VIEW === */
+async function renderAuth(){
+  const hasT = await AUTH.hasTeacher();
+  $('#root').innerHTML = `<div class="auth"><div class="acc">
+    <span class="logo">🎯</span>
+    <h1>ریاضی‌لند</h1>
+    <p class="sub">کلاس دیجیتال ریاضیات متوسطه اول</p>
+    ${!hasT ? `
+      <div class="alert ain">اولین اجرا: حساب معلم را بساز</div>
+      <label>نام کامل</label>
+      <input id="a-n" placeholder="علی احمدی">
+      <label>نام کاربری</label>
+      <input id="a-u" placeholder="username">
+      <label>رمز عبور (۶+ کاراکتر)</label>
+      <input id="a-p" type="password">
+      <div id="a-e"></div>
+      <div style="margin-top:14px">
+        <button class="btn bp bb" onclick="doRegT()">ایجاد حساب معلم</button>
+      </div>
+    ` : `
+      <label>نام کاربری</label>
+      <input id="a-u" placeholder="username">
+      <label>رمز عبور</label>
+      <input id="a-p" type="password">
+      <div id="a-e"></div>
+      <div style="margin-top:14px">
+        <button class="btn bp bb" onclick="doLogin()">ورود</button>
+      </div>
+      <p class="sub" style="margin-top:14px;font-size:.72rem">
+        حساب دانش‌آموز توسط معلم ساخته می‌شود</p>
+    `}
+  </div></div>`;
+}
+async function doRegT(){
+  try{
+    await AUTH.regTeacher({fullName:$('#a-n').value.trim(),
+      username:$('#a-u').value.trim(),password:$('#a-p').value});
+    toast('حساب ساخته شد','s');
+    setTimeout(()=>location.reload(),600);
+  }catch(e){ $('#a-e').innerHTML = `<div class="alert aer">${esc(e.message)}</div>`; }
+}
+async function doLogin(){
+  try{
+    await AUTH.login($('#a-u').value.trim(), $('#a-p').value);
+    toast('خوش آمدید','s');
+    setTimeout(()=>location.reload(),400);
+  }catch(e){ $('#a-e').innerHTML = `<div class="alert aer">${esc(e.message)}</div>`; }
+}
+
+/* === VIEWS === */
+const VIEWS = {};
+
+VIEWS.dashboard = async u => u.role === 'student' ? await studentDash(u) : await teacherDash(u);
+
+async function studentDash(u){
+  const [xp, streak, missions, badges, attempts, gscores, subs, assigns, quizzes, grades] =
+    await Promise.all([getUserXP(u.id), getStreak(u.id), getMissions(u.id), evalBadges(u.id),
+      DB.byIdx('attempts','studentId',u.id), DB.byIdx('gameScores','studentId',u.id),
+      DB.byIdx('submissions','studentId',u.id), DB.all('assignments'),
+      DB.all('quizzes'), DB.byIdx('grades','studentId',u.id)]);
+  const lv = lvlInfo(xp), lg = leagueFor(xp);
+  const earned = badges.filter(b=>b.earned);
+  const myA = assigns.filter(a=>a.grade===u.grade);
+  const myQ = quizzes.filter(q=>q.grade===u.grade);
+  const pend = myA.filter(a=>!subs.find(s=>s.assignmentId===a.id));
+  const avg = grades.length ? (grades.reduce((s,g)=>s+ +g.score,0)/grades.length).toFixed(1) : 0;
+  const others = (await DB.all('users')).filter(x=>x.role==='student'&&x.grade===u.grade);
+  const ranked = (await Promise.all(others.map(async s=>({...s,xp:await getUserXP(s.id)}))))
+    .sort((a,b)=>b.xp-a.xp);
+  const rank = ranked.findIndex(r=>r.id===u.id)+1;
+  const doneM = missions.filter(m=>m.done).length;
+
+  return {
+    title: `سلام ${esc(u.fullName.split(' ')[0])}! 👋`,
+    actions: `<button class="bic" onclick="pickAvatar()">${esc(u.avatar||'🎓')}</button>`,
+    body: `<div class="hero"><div class="hin">
+      <div class="hav" onclick="pickAvatar()">${esc(u.avatar||'🎓')}</div>
+      <div class="hinf">
+        <h2>سطح ${fmt(lv.lv)} • ${lv.name} ${lv.icon}</h2>
+        <div class="sub">${lg.i} لیگ ${lg.n} • رتبه ${fmt(rank)} پایه ${fmt(u.grade)}</div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap">
+          <span style="background:rgba(255,255,255,.22);padding:4px 10px;border-radius:14px;font-size:.75rem;font-weight:800">💎 ${fmt(xp)} XP</span>
+          ${streak?`<span style="background:rgba(239,68,68,.9);padding:4px 10px;border-radius:14px;font-size:.75rem;font-weight:800">🔥 ${fmt(streak)} روز</span>`:''}
+        </div>
+        <div class="xbw">
+          <div class="xbl"><span>تا سطح ${fmt(lv.lv+1)}</span>
+            <span>${fmt(xp-lv.start)} / ${fmt(lv.next-lv.start)}</span></div>
+          <div class="xb"><div class="xbf" style="width:${lv.progress}%"></div></div>
+        </div>
+        <div style="display:flex;gap:14px;margin-top:12px;flex-wrap:wrap;font-size:.8rem">
+          <div>🏆 <b>${fmt(rank)}</b> رتبه</div>
+          <div>🎖️ <b>${fmt(earned.length)}</b> نشان</div>
+          <div>📊 <b>${fmt(avg)}</b> میانگین</div>
+          <div>🎯 <b>${fmt(attempts.length)}</b> آزمون</div>
+        </div>
+      </div>
+    </div></div>
+
+    <div class="card">
+      <div class="ct">🎯 امروز چه مأموریتی داری؟ <span class="pill in">${fmt(doneM)}/${fmt(missions.length)}</span></div>
+      <div class="gr g2">
+        ${missions.map(m=>`<div class="mc ${m.done?'done':''}">
+          <div class="mh"><div class="mi2">${m.i}</div>
+            <div class="minf"><b>${m.t}</b><small>${m.d} • ${m.ty==='d'?'روزانه':'هفتگی'}</small></div>
+            <div class="mrw">+${fmt(m.xp)} XP</div></div>
+          <div class="mp"><div class="mpf ${m.done?'done':''}" style="width:${(m.progress/m.tg)*100}%"></div></div>
+          <div style="font-size:.68rem;color:var(--mu);margin-top:3px;text-align:left">
+            ${m.done?'✅':`${fmt(m.progress)}/${fmt(m.tg)}`}</div>
+        </div>`).join('')}
+      </div>
+    </div>
+
+    <div class="gr g4" style="margin-bottom:14px">
+      <div class="qt" onclick="go('games')"><span class="qti">🎮</span><b>بازی</b><small>${fmt(gscores.length)} انجام‌شده</small></div>
+      <div class="qt" onclick="go('myQuizzes')"><span class="qti">🎯</span><b>آزمون</b><small>${fmt(myQ.length)} فعال</small></div>
+      <div class="qt" onclick="go('myAssignments')"><span class="qti">📝</span><b>تکلیف</b><small>${fmt(pend.length)} باقی</small></div>
+      <div class="qt" onclick="go('leaderboard')"><span class="qti">🏆</span><b>لیگ</b><small>${lg.i} ${lg.n}</small></div>
+    </div>
+
+    <div class="gr g2">
+      <div class="card">
+        <div class="ct">🎖️ نشان‌ها <a onclick="go('badges')" style="margin-right:auto;font-size:.78rem">همه ›</a></div>
+        <div class="gr g4">
+          ${earned.slice(-4).map(b=>`<div class="bcard earned">
+            <span class="bi">${b.i}</span><b>${b.t}</b></div>`).join('')
+            ||'<div class="empty" style="grid-column:1/-1"><div class="ei">🎖️</div><p>هنوز نشانی نیست</p></div>'}
+        </div>
+      </div>
+      <div class="card">
+        <div class="ct">📝 تکالیف نزدیک</div>
+        ${pend.slice(0,3).map(a=>`<div class="fi">
+          <span class="fic">⏳</span>
+          <div class="fii"><b>${esc(a.title)}</b><small>مهلت: ${dl(a.deadline)}</small></div>
+          <button class="btn bp bsm" onclick="openSub(${a.id})">ارسال</button>
+        </div>`).join('')||'<div class="empty"><div class="ei">✨</div><p>تکلیفی نیست</p></div>'}
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="ct">📊 پیشرفت درسی</div>
+      ${CURR[u.grade].ch.map(([id,t])=>{
+        const cg = grades.filter(g=>g.chapterId===id);
+        const avgC = cg.length ? (cg.reduce((s,g)=>s+ +g.score,0)/cg.length) : 0;
+        return `<div class="cbar"><div class="cbh"><span>${esc(t)}</span>
+          <span style="color:var(--mu)">${cg.length?fmt(avgC.toFixed(1))+'/۲۰':'—'}</span></div>
+          <div class="cbt"><div class="cbf" style="width:${(avgC/20)*100}%"></div></div></div>`;
+      }).join('')}
+    </div>`
+  };
+}
+
+async function teacherDash(u){
+  const [users, grades, subs, quizzes] = await Promise.all([
+    DB.all('users'), DB.all('grades'), DB.all('submissions'), DB.all('quizzes')]);
+  const stu = users.filter(x=>x.role==='student');
+  const avg = grades.length ? (grades.reduce((s,g)=>s+ +g.score,0)/grades.length).toFixed(1) : 0;
+  const pend = subs.filter(s=>s.score==null).length;
+  return {
+    title: 'داشبورد معلم',
+    body: `<div class="gr g4" style="margin-bottom:16px">
+        ${statCard('👥',stu.length,'دانش‌آموزان','c1')}
+        ${statCard('📊',avg,'میانگین','c2')}
+        ${statCard('📝',pend,'در انتظار','c3')}
+        ${statCard('🎯',quizzes.length,'آزمون‌ها','c4')}
+      </div>
+      <div class="gr g2">
+        <div class="card">
+          <div class="ct">📌 پاسخ‌های در انتظار</div>
+          ${subs.filter(s=>s.score==null).slice(0,5).map(s=>{
+            const st = stu.find(x=>x.id===s.studentId);
+            return `<div class="fi"><span class="fic">📝</span>
+              <div class="fii"><b>${esc(st?.fullName||'—')}</b><small>پاسخ تکلیف</small></div>
+              <button class="btn bp bsm" onclick="go('assignments')">بررسی</button></div>`;
+          }).join('')||'<div class="empty"><div class="ei">✨</div><p>همه تصحیح شده</p></div>'}
+        </div>
+        <div class="card">
+          <div class="ct">📊 توزیع پایه‌ها</div>
+          <div class="gr g3">
+            ${[7,8,9].map(g=>`<div class="st c1">
+              <span class="em">${g===7?'🔢':g===8?'📈':'🔷'}</span>
+              <div class="v">${fmt(stu.filter(s=>s.grade===g).length)}</div>
+              <div class="l">پایه ${fmt(g)}</div></div>`).join('')}
+          </div>
+        </div>
+      </div>`
+  };
+}
+
+/* === Avatar === */
+const AVS = ['🎓','👦','👧','🦊','🐼','🦁','🐯','🐸','🐺','🦉','🐧','🚀','⭐','💎','🔮','🎨','⚽','🎸','🌟'];
+function pickAvatar(){
+  modal(`<h3>🎨 انتخاب آواتار</h3>
+    <div class="ag">${AVS.map(a=>`<div class="ao ${a===ST.user.avatar?'sel':''}"
+      onclick="saveAv('${a}')">${a}</div>`).join('')}</div>
+    <div class="mac"><button class="btn bs bb" onclick="closeModal()">بستن</button></div>`);
+}
+async function saveAv(a){
+  ST.user.avatar = a;
+  await DB.put('users', ST.user);
+  closeModal(); toast('ذخیره شد','s'); render();
+}
+
+/* === Students === */
+VIEWS.students = async u => {
+  if(u.role!=='teacher') return {title:'دسترسی',body:'<div class="empty">دسترسی ندارید</div>'};
+  const users = (await DB.all('users')).filter(x=>x.role==='student');
+  return {
+    title: 'مدیریت دانش‌آموزان',
+    actions: `<button class="btn bp bsm" onclick="openAddStu()">➕ دانش‌آموز</button>`,
+    body: `<div class="card">
+      <div class="ct">👥 لیست <span class="pill in">${fmt(users.length)}</span>
+        <div class="ac">
+          <input id="sst" placeholder="🔍 جست‌وجو" style="width:150px" oninput="filterStu()">
+          <select id="sfg" style="width:110px" onchange="filterStu()">
+            <option value="">همه</option><option value="7">هفتم</option>
+            <option value="8">هشتم</option><option value="9">نهم</option>
+          </select>
+        </div>
+      </div>
+      <div class="tw"><table class="tbl" id="stbl">
+        <thead><tr><th>نام</th><th>کاربر</th><th>پایه</th><th>آواتار</th><th>عملیات</th></tr></thead>
+        <tbody>${users.map(s=>`<tr data-name="${esc(s.fullName)}" data-grade="${s.grade}">
+          <td><b>${esc(s.fullName)}</b></td><td>${esc(s.username)}</td>
+          <td><span class="pill in">${fmt(s.grade)}</span></td>
+          <td style="font-size:1.4rem">${esc(s.avatar||'🎓')}</td>
+          <td>
+            <button class="btn bs bsm" onclick="openProf(${s.id})">پروفایل</button>
+            <button class="btn bd bsm" onclick="delStu(${s.id})">حذف</button>
+          </td></tr>`).join('')||'<tr><td colspan="5" class="empty">دانش‌آموزی نیست</td></tr>'}</tbody>
+      </table></div>
+    </div>`
+  };
+};
+function filterStu(){
+  const q = $('#sst').value.trim(), g = $('#sfg').value;
+  $$('#stbl tbody tr').forEach(tr => {
+    const nm = !q || (tr.dataset.name||'').includes(q);
+    const gr = !g || tr.dataset.grade===g;
+    tr.style.display = (nm&&gr)?'':'none';
+  });
+}
+function openAddStu(){
+  modal(`<h3>➕ افزودن دانش‌آموز</h3>
+    <label>نام کامل</label><input id="ns-n" placeholder="نام">
+    <label>نام کاربری</label><input id="ns-u" placeholder="username">
+    <label>رمز عبور</label><input id="ns-p" placeholder="حداقل ۴ کاراکتر">
+    <label>پایه</label><select id="ns-g">
+      <option value="7">هفتم</option><option value="8">هشتم</option><option value="9">نهم</option>
+    </select>
+    <div id="ns-e"></div>
+    <div class="mac"><button class="btn bp" onclick="saveStu()">ایجاد</button>
+      <button class="btn bs" onclick="closeModal()">انصراف</button></div>`);
+}
+async function saveStu(){
+  try{
+    await AUTH.regStudent({fullName:$('#ns-n').value.trim(),
+      username:$('#ns-u').value.trim(),password:$('#ns-p').value,grade:+$('#ns-g').value});
+    closeModal(); toast('ساخته شد','s'); render();
+  }catch(e){ $('#ns-e').innerHTML = `<div class="alert aer">${esc(e.message)}</div>`; }
+}
+async function delStu(id){
+  const u = await DB.get('users', id);
+  if(!u) return;
+  if(!confirm(`حذف «${u.fullName}»؟`)) return;
+  for(const st of ['grades','submissions','attempts','gameScores','activities']){
+    const idx = st==='activities' ? 'userId' : 'studentId';
+    const arr = await DB.byIdx(st, idx, id);
+    for(const x of arr) await DB.del(st, x.id);
+  }
+  await DB.del('users', id);
+  toast('حذف شد','s'); render();
+}
+async function openProf(id){
+  const u = await DB.get('users', id);
+  const [grades, attempts, subs, xp, streak, badges] = await Promise.all([
+    DB.byIdx('grades','studentId',id), DB.byIdx('attempts','studentId',id),
+    DB.byIdx('submissions','studentId',id), getUserXP(id),
+    getStreak(id), evalBadges(id)]);
+  const avg = grades.length ? (grades.reduce((s,g)=>s+ +g.score,0)/grades.length).toFixed(1) : 0;
+  const lv = lvlInfo(xp), earned = badges.filter(b=>b.earned);
+  modal(`<h3>${esc(u.avatar||'👤')} ${esc(u.fullName)} — پایه ${fmt(u.grade)}</h3>
+    <p style="color:var(--mu);font-size:.82rem;margin-bottom:12px">
+      کاربر: <b>${esc(u.username)}</b> • سطح ${fmt(lv.lv)} (${lv.name})</p>
+    <div class="gr g3" style="margin-bottom:12px">
+      ${statCard('💎',xp,'XP')}${statCard('📊',avg,'میانگین')}${statCard('🔥',streak,'روز')}
+    </div>
+    <div class="gr g3" style="margin-bottom:12px">
+      ${statCard('🎯',attempts.length,'آزمون')}${statCard('📝',subs.length,'تکالیف')}
+      ${statCard('🎖️',earned.length,'نشان')}
+    </div>
+    <div class="mac"><button class="btn bs bb" onclick="closeModal()">بستن</button></div>`);
+}
+
+/* === Grades === */
+VIEWS.grades = async u => {
+  if(u.role!=='teacher') return {title:'نمرات',body:'<div class="empty">دسترسی ندارید</div>'};
+  const [grades, users] = await Promise.all([DB.all('grades'), DB.all('users')]);
+  const stu = users.filter(x=>x.role==='student');
+  return {
+    title: 'مدیریت نمرات',
+    actions: `<button class="btn bp bsm" onclick="openAddGrade()">➕ نمره</button>`,
+    body: `<div class="card">
+      <div class="ct">📊 نمرات <span class="pill in">${fmt(grades.length)}</span></div>
+      <div class="tw"><table class="tbl">
+        <thead><tr><th>دانش‌آموز</th><th>پایه</th><th>عنوان</th><th>فصل</th><th>نمره</th><th>تاریخ</th><th></th></tr></thead>
+        <tbody>${grades.slice().reverse().map(g=>{
+          const s = stu.find(x=>x.id===g.studentId);
+          return `<tr><td><b>${esc(s?.fullName||'—')}</b></td>
+            <td>${s?fmt(s.grade):'—'}</td><td>${esc(g.title)}</td>
+            <td style="font-size:.76rem">${esc(chS(g.chapterId))}</td>
+            <td>${gradePill(g.score)}</td><td>${fdate(g.createdAt)}</td>
+            <td><button class="btn bd bsm" onclick="delGrade(${g.id})">🗑</button></td>
+          </tr>`;
+        }).join('')||'<tr><td colspan="7" class="empty">نمره‌ای نیست</td></tr>'}</tbody>
+      </table></div>
+    </div>`
+  };
+};
+async function openAddGrade(){
+  const users = (await DB.all('users')).filter(x=>x.role==='student');
+  if(!users.length) return toast('ابتدا دانش‌آموز اضافه کنید','e');
+  modal(`<h3>➕ ثبت نمره</h3>
+    <label>دانش‌آموز</label>
+    <select id="g-st">${users.map(s=>`<option value="${s.id}">${esc(s.fullName)} (پایه ${fmt(s.grade)})</option>`).join('')}</select>
+    <label>فصل</label><select id="g-ch">${chO()}</select>
+    <label>عنوان</label><input id="g-t" placeholder="میان‌ترم">
+    <label>نمره (۰-۲۰)</label><input id="g-s" type="number" min="0" max="20" step="0.25">
+    <div id="g-e"></div>
+    <div class="mac"><button class="btn bp" onclick="saveGrade()">ثبت</button>
+      <button class="btn bs" onclick="closeModal()">انصراف</button></div>`);
+}
+async function saveGrade(){
+  const s = +$('#g-s').value;
+  if(isNaN(s)||s<0||s>20) return $('#g-e').innerHTML = '<div class="alert aer">نمره ۰-۲۰</div>';
+  await DB.add('grades',{studentId:+$('#g-st').value,chapterId:$('#g-ch').value,
+    title:$('#g-t').value.trim()||'آزمون',score:s,createdAt:now()});
+  closeModal(); toast('ثبت شد','s'); render();
+}
+async function delGrade(id){
+  if(!confirm('حذف نمره؟')) return;
+  await DB.del('grades', id); toast('حذف شد','s'); render();
+}
+
+/* === Assignments (Teacher) === */
+VIEWS.assignments = async u => {
+  if(u.role!=='teacher') return {title:'تکالیف',body:'<div class="empty">دسترسی ندارید</div>'};
+  const [asg, subs] = await Promise.all([DB.all('assignments'), DB.all('submissions')]);
+  return {
+    title: 'مدیریت تکالیف',
+    actions: `<button class="btn bp bsm" onclick="openAddAsg()">➕ تکلیف</button>`,
+    body: `<div class="card">
+      <div class="ct">📝 تکالیف <span class="pill in">${fmt(asg.length)}</span></div>
+      ${asg.length===0?'<div class="empty"><div class="ei">📭</div><p>تکلیفی نیست</p></div>':
+        asg.slice().reverse().map(a=>{
+          const as = subs.filter(s=>s.assignmentId===a.id);
+          const pend = as.filter(s=>s.score==null).length;
+          return `<div class="card" style="background:var(--bg);padding:12px;margin-bottom:8px">
+            <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px">
+              <div><b>${esc(a.title)}</b>
+                <div style="font-size:.72rem;color:var(--mu);margin-top:2px">
+                  📚 ${esc(chS(a.chapterId))} • 📅 ${dl(a.deadline)}
+                  • 👥 ${fmt(as.length)} ارسال
+                  ${pend?` • <span class="pill wa">${fmt(pend)} در انتظار</span>`:''}</div>
+              </div>
+              <div style="display:flex;gap:4px">
+                <button class="btn bs bsm" onclick="viewSubs(${a.id})">📥 پاسخ‌ها</button>
+                <button class="btn bd bsm" onclick="delAsg(${a.id})">🗑</button>
+              </div>
+            </div>
+            ${a.description?`<p style="font-size:.8rem;color:var(--mu);margin-top:4px">${esc(a.description)}</p>`:''}
+          </div>`;
+        }).join('')}
+    </div>`
+  };
+};
+function openAddAsg(){
+  modal(`<h3>📝 تکلیف جدید</h3>
+    <label>عنوان</label><input id="as-t" placeholder="حل تمرین‌های فصل">
+    <label>فصل</label><select id="as-c">${chO()}</select>
+    <label>مهلت</label><input id="as-d" type="date">
+    <label>توضیح</label><textarea id="as-ds" rows="3"></textarea>
+    <div id="as-e"></div>
+    <div class="mac"><button class="btn bp" onclick="saveAsg()">ثبت</button>
+      <button class="btn bs" onclick="closeModal()">انصراف</button></div>`);
+}
+async function saveAsg(){
+  const t = $('#as-t').value.trim();
+  if(!t) return $('#as-e').innerHTML = '<div class="alert aer">عنوان الزامی</div>';
+  const ch = $('#as-c').value;
+  await DB.add('assignments',{title:t,chapterId:ch,grade:chG(ch),
+    deadline:$('#as-d').value.trim(),description:$('#as-ds').value.trim(),
+    teacherId:ST.user.id,createdAt:now()});
+  closeModal(); toast('ثبت شد','s'); render();
+}
+async function delAsg(id){
+  if(!confirm('حذف تکلیف و پاسخ‌ها؟')) return;
+  const subs = await DB.byIdx('submissions','assignmentId',id);
+  for(const s of subs) await DB.del('submissions', s.id);
+  await DB.del('assignments', id);
+  toast('حذف شد','s'); render();
+}
+async function viewSubs(aid){
+  const a = await DB.get('assignments', aid);
+  const subs = await DB.byIdx('submissions','assignmentId',aid);
+  const users = (await DB.all('users')).filter(x=>x.role==='student'&&x.grade===a.grade);
+  modal(`<h3>📥 پاسخ‌های «${esc(a.title)}»</h3>
+    ${users.length===0?'<p>دانش‌آموزی نیست</p>':
+      users.map(s=>{
+        const sub = subs.find(x=>x.studentId===s.id);
+        return `<div class="fi"><span class="fic">${esc(s.avatar||'👤')}</span>
+          <div class="fii"><b>${esc(s.fullName)}</b>
+            <small>${sub?(sub.score!=null?`تصحیح: ${fmt(sub.score)}`:'در انتظار'):'تحویل نداده'}</small>
+          </div>
+          ${sub?`<button class="btn bp bsm" onclick="gradeSub(${sub.id})">تصحیح</button>`:''}
+        </div>`;
+      }).join('')}
+    <div class="mac"><button class="btn bs bb" onclick="closeModal()">بستن</button></div>`);
+}
+async function gradeSub(id){
+  const s = await DB.get('submissions', id);
+  const a = await DB.get('assignments', s.assignmentId);
+  modal(`<h3>📝 تصحیح</h3>
+    <p style="font-size:.8rem;color:var(--mu);margin-bottom:8px">
+      ${esc(a.title)} • ${fdate(s.submittedAt)}</p>
+    <div style="background:var(--bg);padding:10px;border-radius:10px;margin-bottom:10px;
+      font-size:.82rem;white-space:pre-wrap">${esc(s.content||'—')}</div>
+    <label>نمره (۰-۲۰)</label>
+    <input id="gr-s" type="number" min="0" max="20" step="0.25" value="${s.score??''}">
+    <label>بازخورد</label><textarea id="gr-f" rows="3">${esc(s.feedback||'')}</textarea>
+    <div class="mac"><button class="btn bp" onclick="saveGradeSub(${id})">ذخیره</button>
+      <button class="btn bs" onclick="closeModal()">انصراف</button></div>`);
+}
+async function saveGradeSub(id){
+  const sc = parseFloat($('#gr-s').value);
+  if(isNaN(sc)||sc<0||sc>20) return toast('نمره نامعتبر','e');
+  const s = await DB.get('submissions', id);
+  s.score = sc; s.feedback = $('#gr-f').value.trim();
+  await DB.put('submissions', s);
+  closeModal(); toast('ثبت شد','s'); render();
+}
+
+/* === Assignments (Student) === */
+VIEWS.myAssignments = async u => {
+  const asg = (await DB.all('assignments')).filter(a=>a.grade===u.grade);
+  const subs = await DB.byIdx('submissions','studentId',u.id);
+  return {
+    title: 'تکالیف من',
+    body: `<div class="card"><div class="ct">📝 تکالیف پایه ${fmt(u.grade)}</div>
+      ${asg.length===0?'<div class="empty"><div class="ei">📭</div><p>تکلیفی نیست</p></div>':
+        asg.map(a=>{
+          const sub = subs.find(s=>s.assignmentId===a.id);
+          return `<div class="card" style="background:var(--bg);padding:12px;margin-bottom:8px">
+            <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px">
+              <div style="flex:1;min-width:180px">
+                <b>${esc(a.title)}</b>
+                <div style="font-size:.72rem;color:var(--mu);margin-top:2px">
+                  📚 ${esc(chS(a.chapterId))} • 📅 ${dl(a.deadline)}</div>
+                ${a.description?`<p style="font-size:.8rem;margin-top:4px;color:var(--mu)">${esc(a.description)}</p>`:''}
+              </div>
+              <div style="text-align:left">
+                ${sub?`<span class="pill su">تحویل</span>
+                  ${sub.score!=null?`<div style="margin-top:4px">${gradePill(sub.score)}</div>`:
+                    '<div style="margin-top:4px;font-size:.72rem;color:var(--mu)">در انتظار</div>'}
+                  ${sub.feedback?`<div style="margin-top:4px;font-size:.75rem;background:#fef3c7;
+                    padding:5px 8px;border-radius:7px;color:#92400e">📝 ${esc(sub.feedback)}</div>`:''}
+                `:`<button class="btn bp bsm" onclick="openSub(${a.id})">📤 ارسال</button>`}
+              </div>
+            </div>
+          </div>`;
+        }).join('')}
+    </div>`
+  };
+};
+function openSub(aid){
+  modal(`<h3>📤 ارسال پاسخ</h3>
+    <label>متن پاسخ</label>
+    <textarea id="sb-c" rows="5" placeholder="پاسخ خود را بنویسید..."></textarea>
+    <div id="sb-e"></div>
+    <div class="mac"><button class="btn bp" onclick="saveSub(${aid})">ارسال</button>
+      <button class="btn bs" onclick="closeModal()">انصراف</button></div>`);
+}
+async function saveSub(aid){
+  const c = $('#sb-c').value.trim();
+  if(!c) return $('#sb-e').innerHTML = '<div class="alert aer">متن الزامی</div>';
+  await DB.add('submissions',{assignmentId:aid,studentId:ST.user.id,
+    content:c,submittedAt:now(),score:null,feedback:''});
+  await awardXP(ST.user.id,'assignment_submit',25);
+  await checkMissions(ST.user.id);
+  await checkBadges(ST.user.id);
+  closeModal(); toast('ارسال شد! +۲۵ XP 🎉','s'); confetti(); render();
+}
+
+/* === Quiz Builder === */
+VIEWS.quizzes = async u => {
+  if(u.role!=='teacher') return {title:'آزمون‌ها',body:'<div class="empty">دسترسی ندارید</div>'};
+  const [quizzes, attempts] = await Promise.all([DB.all('quizzes'), DB.all('attempts')]);
+  return {
+    title: 'مدیریت آزمون‌ها',
+    actions: `<button class="btn bp bsm" onclick="openQB()">➕ آزمون</button>`,
+    body: `<div class="card">
+      <div class="ct">🎯 آزمون‌ها <span class="pill in">${fmt(quizzes.length)}</span></div>
+      ${quizzes.length===0?'<div class="empty"><div class="ei">📭</div><p>آزمونی نیست</p></div>':
+        quizzes.map(q=>{
+          const qa = attempts.filter(a=>a.quizId===q.id);
+          const avg = qa.length ? (qa.reduce((s,a)=>s+a.score,0)/qa.length).toFixed(1) : '—';
+          return `<div class="card" style="background:var(--bg);padding:12px;margin-bottom:8px">
+            <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px">
+              <div><b>${esc(q.title)}</b>
+                <div style="font-size:.74rem;color:var(--mu);margin-top:2px">
+                  📚 ${esc(chS(q.chapterId))} • ❓ ${fmt(q.questions.length)} سوال
+                  • ⏱ ${fmt(q.duration)} دقیقه • 👥 ${fmt(qa.length)} شرکت
+                  • میانگین: ${avg!=='—'?gradePill(avg):'—'}</div>
+              </div>
+              <button class="btn bd bsm" onclick="delQuiz(${q.id})">🗑</button>
+            </div>
+          </div>`;
+        }).join('')}
+    </div>`
+  };
+};
+function openQB(){
+  ST.qb = {title:'',chapterId:'',duration:15,
+    questions:[{text:'',options:['','','',''],correct:0}]};
+  renderQB();
+}
+function renderQB(){
+  const q = ST.qb;
+  modal(`<h3>🎯 ساخت آزمون</h3>
+    <label>عنوان</label>
+    <input id="qb-t" value="${esc(q.title)}" oninput="ST.qb.title=this.value" placeholder="آزمون فصل ۲">
+    <label>فصل</label>
+    <select onchange="ST.qb.chapterId=this.value">
+      <option value="">انتخاب...</option>${chO()}
+    </select>
+    <label>مدت (دقیقه)</label>
+    <input type="number" min="1" value="${q.duration}" oninput="ST.qb.duration=+this.value||15">
+    <div style="margin-top:12px">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+        <b style="font-size:.85rem">سوالات (${fmt(q.questions.length)})</b>
+        <button class="btn bp bsm" onclick="addQ()">➕ سوال</button>
+      </div>
+      <div id="qb-list">
+        ${q.questions.map((qu,qi)=>`<div class="qbi">
+          <div class="qbh"><b>سوال ${fmt(qi+1)}</b>
+            ${q.questions.length>1?`<button class="btn bd bsm" onclick="rmQ(${qi})">حذف</button>`:''}
+          </div>
+          <input placeholder="متن سوال" value="${esc(qu.text)}"
+            oninput="ST.qb.questions[${qi}].text=this.value">
+          <div style="font-size:.72rem;color:var(--mu);margin:6px 0 3px">گزینه‌ها (دایره = صحیح):</div>
+          ${qu.options.map((o,oi)=>`<div class="orow">
+            <input type="radio" name="qc-${qi}" ${qu.correct===oi?'checked':''}
+              onchange="ST.qb.questions[${qi}].correct=${oi}">
+            <input type="text" placeholder="گزینه ${fmt(oi+1)}" value="${esc(o)}"
+              oninput="ST.qb.questions[${qi}].options[${oi}]=this.value">
+          </div>`).join('')}
+        </div>`).join('')}
+      </div>
+    </div>
+    <div id="qb-e"></div>
+    <div class="mac"><button class="btn bp" onclick="saveQuiz()">ساخت</button>
+      <button class="btn bs" onclick="closeModal();ST.qb=null">انصراف</button></div>`);
+}
+function addQ(){
+  ST.qb.questions.push({text:'',options:['','','',''],correct:0});
+  renderQB();
+}
+function rmQ(i){
+  ST.qb.questions.splice(i,1);
+  renderQB();
+}
+async function saveQuiz(){
+  const q = ST.qb;
+  if(!q.title.trim()) return $('#qb-e').innerHTML = '<div class="alert aer">عنوان الزامی</div>';
+  if(!q.chapterId) return $('#qb-e').innerHTML = '<div class="alert aer">فصل انتخاب کنید</div>';
+  for(let i=0;i<q.questions.length;i++){
+    const qu = q.questions[i];
+    if(!qu.text.trim()) return $('#qb-e').innerHTML = `<div class="alert aer">سوال ${i+1}: متن الزامی</div>`;
+    if(qu.options.some(o=>!o.trim())) return $('#qb-e').innerHTML = `<div class="alert aer">سوال ${i+1}: همه گزینه‌ها پر شوند</div>`;
+  }
+  await DB.add('quizzes',{title:q.title,chapterId:q.chapterId,grade:chG(q.chapterId),
+    duration:q.duration,questions:q.questions,teacherId:ST.user.id,createdAt:now()});
+  closeModal(); ST.qb = null;
+  toast('ساخته شد','s'); render();
+}
+async function delQuiz(id){
+  if(!confirm('حذف آزمون؟')) return;
+  await DB.del('quizzes', id); toast('حذف شد','s'); render();
+}
+
+/* === Quizzes Student === */
+VIEWS.myQuizzes = async u => {
+  const quizzes = (await DB.all('quizzes')).filter(q=>q.grade===u.grade);
+  const attempts = await DB.byIdx('attempts','studentId',u.id);
+  return {
+    title: 'آزمون‌های من',
+    body: `<div class="card"><div class="ct">🎯 آزمون‌های پایه ${fmt(u.grade)}</div>
+      <div class="gr g3">
+        ${quizzes.length===0?'<div class="empty" style="grid-column:1/-1"><div class="ei">📭</div><p>آزمونی نیست</p></div>':
+          quizzes.map(q=>{
+            const best = attempts.filter(a=>a.quizId===q.id).sort((a,b)=>b.score-a.score)[0];
+            return `<div class="gcard">
+              <div class="gi">🎯</div><h4>${esc(q.title)}</h4>
+              <p>${fmt(q.questions.length)} سوال • ${fmt(q.duration)} دقیقه</p>
+              ${best?`<div style="margin:6px 0">${gradePill(best.score)}</div>`:''}
+              <button class="btn bp bsm" onclick="startQuiz(${q.id})" style="margin-top:6px">
+                ${best?'🔄 دوباره':'🚀 شروع'}</button>
+            </div>`;
+          }).join('')}
+      </div>
+    </div>`
+  };
+};
+async function startQuiz(id){
+  ST.quiz = await DB.get('quizzes', id);
+  ST.qIdx = 0; ST.qAns = [];
+  renderQuizQ();
+}
+function renderQuizQ(){
+  const q = ST.quiz;
+  if(!q) return go('myQuizzes');
+  if(ST.qIdx >= q.questions.length) return finishQuiz();
+  const qq = q.questions[ST.qIdx];
+  const prog = (ST.qIdx / q.questions.length) * 100;
+  $('#root').innerHTML = `<main class="mn" style="max-width:700px;margin:20px auto">
+    <div class="qs">
+      <div style="display:flex;justify-content:space-between;margin-bottom:12px;
+        font-size:.8rem;color:var(--mu)">
+        <span>${esc(q.title)}</span>
+        <span>سوال ${fmt(ST.qIdx+1)} از ${fmt(q.questions.length)}</span>
+      </div>
+      <div class="qp"><div class="qpf" style="width:${prog}%"></div></div>
+      <div class="qtx">${esc(qq.text)}</div>
+      <div class="qo">
+        ${qq.options.map((o,i)=>`<button class="qopt" onclick="ansQ(${i})">
+          <span class="lt">${['الف','ب','ج','د'][i]}</span><span>${esc(o)}</span></button>`).join('')}
+      </div>
+    </div>
+  </main>`;
+}
+function ansQ(i){
+  const q = ST.quiz, qq = q.questions[ST.qIdx];
+  const opts = $$('.qopt');
+  if(opts[0]?.classList.contains('locked')) return;
+  opts.forEach(o=>o.classList.add('locked'));
+  if(i === qq.correct){
+    opts[i].classList.add('correct');
+    ST.qAns.push({qi:ST.qIdx,a:i,ok:true});
+    toast('درست! 🎉','s');
+  } else {
+    opts[i].classList.add('wrong');
+    opts[qq.correct].classList.add('correct');
+    ST.qAns.push({qi:ST.qIdx,a:i,ok:false});
+    toast('اشتباه','e');
+  }
+  setTimeout(()=>{ ST.qIdx++; renderQuizQ(); },1100);
+}
+async function finishQuiz(){
+  const q = ST.quiz;
+  const corr = ST.qAns.filter(a=>a.ok).length;
+  const score = Math.round((corr/q.questions.length)*20*100)/100;
+  await DB.add('attempts',{quizId:q.id,studentId:ST.user.id,answers:ST.qAns,
+    score,maxScore:20,finishedAt:now()});
+  await awardXP(ST.user.id,'quiz_submit',15);
+  if(score>=15) await awardXP(ST.user.id,'quiz_bonus',Math.round(score));
+  await checkMissions(ST.user.id);
+  await checkBadges(ST.user.id);
+  const pc = (corr/q.questions.length)*100;
+  $('#root').innerHTML = `<main class="mn" style="max-width:700px;margin:20px auto">
+    <div class="qs" style="text-align:center">
+      <div style="font-size:3.5rem;margin-bottom:10px">${pc===100?'🏆':pc>=60?'🎉':'💪'}</div>
+      <h2 style="margin-bottom:4px">${pc===100?'عالی!':pc>=60?'آفرین!':'تلاش خوبی بود'}</h2>
+      <p style="color:var(--mu);margin-bottom:16px">${esc(q.title)}</p>
+      <div class="gr g2" style="margin-bottom:16px">
+        ${statCard('📊',score,'از ۲۰','c1')}
+        ${statCard('✅',`${corr}/${q.questions.length}`,'صحیح','c4')}
+      </div>
+      <div style="display:flex;gap:6px;justify-content:center;flex-wrap:wrap">
+        <button class="btn bp" onclick="startQuiz(${q.id})">🔄 دوباره</button>
+        <button class="btn bs" onclick="ST.quiz=null;go('myQuizzes')">بازگشت</button>
+      </div>
+    </div>
+  </main>`;
+  if(pc >= 60) confetti();
+}
+
+/* === Library === */
+VIEWS.library = async u => {
+  const all = await DB.all('resources');
+  const list = u.role==='student' ? all.filter(r=>r.grade===u.grade) : all;
+  return {
+    title: 'کتابخانه',
+    actions: u.role==='teacher'?`<button class="btn bp bsm" onclick="openRes()">➕ منبع</button>`:'',
+    body: `<div class="card">
+      <div class="ct">📚 منابع <span class="pill in">${fmt(list.length)}</span></div>
+      ${list.length===0?'<div class="empty"><div class="ei">📭</div><p>منبعی نیست</p></div>':
+        `<div class="gr g3">${list.map(r=>`<div class="fi" style="flex-direction:column;align-items:flex-start;gap:4px">
+          <div style="display:flex;align-items:center;gap:6px;width:100%">
+            <span class="fic">${r.type==='pdf'?'📄':r.type==='video'?'🎥':r.type==='image'?'🖼️':'📎'}</span>
+            <div class="fii"><b>${esc(r.title)}</b>
+              <small>پایه ${fmt(r.grade)} • ${esc(chS(r.chapterId))}</small></div>
+          </div>
+          <div style="display:flex;gap:4px;width:100%;margin-top:4px">
+            <button class="btn bp bsm" onclick="dlRes(${r.id})" style="flex:1">⬇️ دانلود</button>
+            ${u.role==='teacher'?`<button class="btn bd bsm" onclick="delRes(${r.id})">🗑</button>`:''}
+          </div>
+        </div>`).join('')}</div>`}
+    </div>`
+  };
+};
+function openRes(){
+  modal(`<h3>📚 افزودن منبع</h3>
+    <label>عنوان</label><input id="r-t" placeholder="جزوه فصل ۲">
+    <label>فصل</label><select id="r-c">${chO()}</select>
+    <label>فایل (حداکثر ۱۰ مگ)</label><input id="r-f" type="file">
+    <div id="r-e"></div>
+    <div class="mac"><button class="btn bp" onclick="saveRes()">افزودن</button>
+      <button class="btn bs" onclick="closeModal()">انصراف</button></div>`);
+}
+async function saveRes(){
+  const t = $('#r-t').value.trim(), f = $('#r-f').files[0];
+  if(!t||!f) return $('#r-e').innerHTML = '<div class="alert aer">عنوان و فایل الزامی</div>';
+  if(f.size>10*1024*1024) return $('#r-e').innerHTML = '<div class="alert aer">بیش از ۱۰ مگ</div>';
+  const ch = $('#r-c').value;
+  const ty = f.type.startsWith('image/')?'image':f.type.startsWith('video/')?'video'
+    :f.type==='application/pdf'?'pdf':'file';
+  await DB.add('resources',{title:t,chapterId:ch,grade:chG(ch),type:ty,
+    fileBlob:f,fileName:f.name,fileSize:f.size,uploadedBy:ST.user.id,createdAt:now()});
+  closeModal(); toast('افزوده شد','s'); render();
+}
+async function dlRes(id){
+  const r = await DB.get('resources', id);
+  if(!r?.fileBlob) return toast('فایل یافت نشد','e');
+  const url = URL.createObjectURL(r.fileBlob);
+  const a = document.createElement('a');
+  a.href = url; a.download = r.fileName; a.click();
+  setTimeout(()=>URL.revokeObjectURL(url), 5000);
+}
+async function delRes(id){
+  if(!confirm('حذف منبع؟')) return;
+  await DB.del('resources', id); toast('حذف شد','s'); render();
+}
+
+/* === Games === */
+const GAMES = [
+  {id:'calc',i:'⚡',t:'محاسبات سریع',d:'جمع، تفریق و ضرب'},
+  {id:'eq',i:'🧮',t:'معادله‌بازی',d:'حل معادله‌های خطی'},
+  {id:'int',i:'➖',t:'اعداد صحیح',d:'عملیات با اعداد منفی'},
+  {id:'pat',i:'🔗',t:'الگوهای عددی',d:'حدس عدد بعدی'}
+];
+VIEWS.games = async u => {
+  const scores = await DB.byIdx('gameScores','studentId',u.id);
+  const best = {};
+  for(const s of scores) best[s.gameType] = Math.max(best[s.gameType]||0, s.score);
+  return {
+    title: 'بازی و ریاضی',
+    body: `<div class="card"><div class="ct">🎮 بازی‌ها</div>
+      <div class="gr g3">
+        ${GAMES.map(g=>`<div class="gcard" onclick="launchGame('${g.id}')">
+          <div class="gi">${g.i}</div><h4>${g.t}</h4><p>${g.d}</p>
+          ${best[g.id]?`<div style="margin-top:6px"><span class="pill su">🏆 ${fmt(best[g.id])}</span></div>`:''}
+        </div>`).join('')}
+      </div>
+    </div>
+    ${scores.length?`<div class="card"><div class="ct">📊 رکوردهای من</div>
+      <div class="tw"><table class="tbl">
+        <thead><tr><th>بازی</th><th>امتیاز</th><th>تاریخ</th></tr></thead>
+        <tbody>${scores.slice(-10).reverse().map(s=>`<tr>
+          <td>${GAMES.find(g=>g.id===s.gameType)?.t||s.gameType}</td>
+          <td><span class="pill in">${fmt(s.score)}</span></td>
+          <td>${fdate(s.playedAt)}</td></tr>`).join('')}</tbody>
+      </table></div></div>`:''}`
+  };
+};
+function launchGame(id){
+  clearInterval(ST.game?.timer);
+  ST.game = {id,score:0,time:60,streak:0,correct:0,wrong:0,current:null,timer:null};
+  $('#root').innerHTML = `<main class="mn" style="max-width:720px;margin:20px auto">
+    <div class="gar"><button class="btn bsm" style="position:absolute;top:12px;left:12px;z-index:3;background:rgba(255,255,255,.2);color:#fff" onclick="quitGame()">✖ خروج</button>
+      <div class="ghud" style="margin-top:22px">
+        <div class="hi"><div class="hl">امتیاز</div><div class="hv" id="g-score">۰</div></div>
+        <div class="hi"><div class="hl">زمان</div><div class="hv" id="g-time">۶۰</div></div>
+        <div class="hi"><div class="hl">استریک</div><div class="hv" id="g-streak">۰🔥</div></div>
+      </div>
+      <div class="geq" id="g-eq">...</div>
+      <div class="gopts" id="g-opts"></div>
+    </div>
+  </main>`;
+  nextRound();
+  ST.game.timer = setInterval(()=>{
+    ST.game.time--;
+    const el = $('#g-time'); if(el) el.textContent = fmt(ST.game.time);
+    if(ST.game.time <= 0) endGame();
+  },1000);
+}
+function nextRound(){
+  const g = ST.game; if(!g) return;
+  let q, ans;
+  switch(g.id){
+    case 'calc': {
+      const op = ['+','−','×'][randInt(0,2)];
+      const a = op==='×' ? randInt(2,12) : randInt(10,99);
+      const b = op==='×' ? randInt(2,12) : randInt(10,99);
+      ans = op==='+'?a+b:op==='−'?a-b:a*b;
+      q = `${a} ${op} ${b} = ?`; break;
+    }
+    case 'eq': {
+      const a = randInt(2,9), x = randInt(-5,10), b = randInt(-20,20);
+      ans = x; const bs = b>=0?`+ ${b}`:`− ${Math.abs(b)}`;
+      q = `${a}x ${bs} = ${a*x+b}`; break;
+    }
+    case 'int': {
+      const a = randInt(-15,15)||3, b = randInt(-15,15)||4;
+      const op = ['+','−','×'][randInt(0,2)];
+      ans = op==='+'?a+b:op==='−'?a-b:a*b;
+      const sh = n => n<0?`(−${-n})`:`${n}`;
+      q = `${sh(a)} ${op} ${sh(b)} = ?`; break;
+    }
+    default: {
+      const t = randInt(0,2);
+      if(t===0){ const a=randInt(1,20), d=randInt(2,9); ans=a+4*d; q=[0,1,2,3].map(i=>a+i*d).join('، ')+'، ؟'; }
+      else if(t===1){ const a=randInt(1,4), r=randInt(2,3); ans=a*r**4; q=[0,1,2,3].map(i=>a*r**i).join('، ')+'، ؟'; }
+      else { const k=randInt(1,9); ans=(k+4)**2; q=[0,1,2,3].map(i=>(k+i)**2).join('، ')+'، ؟'; }
+    }
+  }
+  g.current = ans; g.lock = false;
+  const set = new Set([ans]);
+  while(set.size<4) set.add(ans+randInt(-10,10));
+  const opts = [...set].sort(()=>Math.random()-.5);
+  const sg = n => fmt(n<0?'−'+(-n):n);
+  $('#g-eq').innerHTML = `<span dir="ltr">${fmt(q)}</span>`;
+  $('#g-opts').innerHTML = opts.map(o=>`<button class="gopt" data-v="${o}" onclick="ansG(${o})"><span dir="ltr">${sg(o)}</span></button>`).join('');
+}
+function ansG(v){
+  const g = ST.game; if(!g || g.lock || g.done) return; g.lock = true;
+  const ok = v === g.current;
+  $$('.gopt').forEach(b=>{ b.disabled = true;
+    if(+b.dataset.v===g.current) b.classList.add('correct'); else if(+b.dataset.v===v) b.classList.add('wrong'); });
+  if(ok){ g.correct++; g.streak++; g.score += 10 + (g.streak>=3?5:0); } else { g.wrong++; g.streak = 0; }
+  $('#g-score').textContent = fmt(g.score); $('#g-streak').textContent = fmt(g.streak)+'🔥';
+  setTimeout(()=>{ if(ST.game===g && !g.done) nextRound(); }, 450);
+}
+function quitGame(){ clearInterval(ST.game?.timer); ST.game = null; go('games'); }
+async function endGame(){
+  const g = ST.game; if(!g || g.done) return;
+  g.done = true; clearInterval(g.timer);
+  const u = ST.user, xp = Math.min(40, Math.round(g.score/4));
+  await DB.add('gameScores',{studentId:u.id,gameType:g.id,score:g.score,correct:g.correct,wrong:g.wrong,playedAt:now()});
+  await awardXP(u.id,'game_complete',xp);
+  await checkMissions(u.id); await checkBadges(u.id);
+  const gm = GAMES.find(x=>x.id===g.id);
+  $('#root').innerHTML = `<main class="mn" style="max-width:720px;margin:20px auto"><div class="qs" style="text-align:center">
+    <div style="font-size:3rem">${gm.i}</div><h2 style="margin:6px 0">${gm.t}</h2>
+    <div class="gr g3" style="margin:16px 0">${statCard('🏆',g.score,'امتیاز','c1')}${statCard('✅',g.correct,'درست','c4')}${statCard('❌',g.wrong,'غلط','c2')}</div>
+    <p style="color:var(--mu);margin-bottom:14px">+${fmt(xp)} XP</p>
+    <div style="display:flex;gap:6px;justify-content:center;flex-wrap:wrap">
+      <button class="btn bp" onclick="launchGame('${g.id}')">🔄 دوباره</button>
+      <button class="btn bs" onclick="ST.game=null;go('games')">بازگشت</button></div></div></main>`;
+  if(g.score>=50) confetti();
+}
+
+/* === Leaderboard / Badges / My grades / Reports === */
+VIEWS.leaderboard = async u => {
+  if(u.role!=='student') return {title:'لیگ',body:'<div class="empty">فقط برای دانش‌آموزان</div>'};
+  const stu = (await DB.all('users')).filter(x=>x.role==='student'&&x.grade===u.grade);
+  const list = (await Promise.all(stu.map(async x=>({...x,xp:await getUserXP(x.id)})))).sort((a,b)=>b.xp-a.xp);
+  const pst = (r,k) => r ? `<div class="pst p${k}"><div class="pav">${esc(r.avatar||'🎓')}</div><div class="pnm">${esc(r.fullName)}</div><div class="psc">${fmt(r.xp)} XP</div><div class="pb">${fmt(k)}</div></div>` : '';
+  return {title:'لیگ پایه '+fmt(u.grade), body:`<div class="card"><div class="ct">🏆 برترین‌ها</div>
+    ${list.length?`<div class="pod">${pst(list[1],2)}${pst(list[0],1)}${pst(list[2],3)}</div>`:'<div class="empty"><div class="ei">📭</div><p>هنوز کسی نیست</p></div>'}
+    ${list.map((r,i)=>{ const lg=leagueFor(r.xp);
+      return `<div class="lrow ${r.id===u.id?'me':''}"><div class="lr ${i<3?'t'+(i+1):''}">${fmt(i+1)}</div>
+      <div class="lnm">${esc(r.avatar||'🎓')} ${esc(r.fullName)}<div class="llg">${lg.i} ${lg.n} • سطح ${fmt(lvlInfo(r.xp).lv)}</div></div>
+      <div class="lxp">${fmt(r.xp)} XP</div></div>`; }).join('')}</div>`};
+};
+VIEWS.badges = async u => {
+  const bs = await evalBadges(u.id);
+  return {title:'افتخارات', body:`<div class="card"><div class="ct">🎖️ نشان‌ها <span class="pill in">${fmt(bs.filter(b=>b.earned).length)}/${fmt(bs.length)}</span></div>
+    <div class="gr g4">${bs.map(b=>`<div class="bcard ${b.earned?'earned':'locked'}"><span class="bi">${b.i}</span><b>${b.t}</b><small>${b.d}</small></div>`).join('')}</div></div>`};
+};
+VIEWS.myGrades = async u => {
+  const [grades, attempts, quizzes] = await Promise.all([DB.byIdx('grades','studentId',u.id), DB.byIdx('attempts','studentId',u.id), DB.all('quizzes')]);
+  const avg = grades.length ? (grades.reduce((a,g)=>a+ +g.score,0)/grades.length).toFixed(1) : '—';
+  return {title:'کارنامه', body:`<div class="gr g3" style="margin-bottom:14px">${statCard('📊',avg,'میانگین نمرات','c1')}${statCard('📋',grades.length,'نمره ثبت‌شده','c2')}${statCard('🎯',attempts.length,'آزمون آنلاین','c4')}</div>
+    <div class="card"><div class="ct">📊 نمرات</div>${grades.length?`<div class="tw"><table class="tbl"><thead><tr><th>عنوان</th><th>فصل</th><th>نمره</th><th>تاریخ</th></tr></thead><tbody>
+      ${grades.slice().reverse().map(g=>`<tr><td>${esc(g.title)}</td><td>${esc(chS(g.chapterId))}</td><td>${gradePill(g.score)}</td><td>${fdate(g.createdAt)}</td></tr>`).join('')}</tbody></table></div>`:'<div class="empty"><div class="ei">📭</div><p>نمره‌ای نیست</p></div>'}</div>
+    <div class="card"><div class="ct">🎯 آزمون‌ها</div>${attempts.length?`<div class="tw"><table class="tbl"><thead><tr><th>آزمون</th><th>نمره</th><th>تاریخ</th></tr></thead><tbody>
+      ${attempts.slice().reverse().map(a=>`<tr><td>${esc(quizzes.find(q=>q.id===a.quizId)?.title||'(حذف‌شده)')}</td><td>${gradePill(a.score)}</td><td>${fdate(a.finishedAt)}</td></tr>`).join('')}</tbody></table></div>`:'<div class="empty"><div class="ei">📭</div><p>آزمونی نداده‌ای</p></div>'}</div>`};
+};
+VIEWS.reports = async u => {
+  if(u.role!=='teacher') return {title:'گزارش‌ها',body:'<div class="empty">دسترسی ندارید</div>'};
+  const [users, grades, attempts] = await Promise.all([DB.all('users'), DB.all('grades'), DB.all('attempts')]);
+  const rows = await Promise.all(users.filter(x=>x.role==='student').map(async s=>{
+    const g = grades.filter(x=>x.studentId===s.id);
+    return {s, avg:g.length?g.reduce((a,x)=>a+ +x.score,0)/g.length:null, q:attempts.filter(a=>a.studentId===s.id).length, xp:await getUserXP(s.id)};
+  }));
+  rows.sort((a,b)=>(b.avg??-1)-(a.avg??-1));
+  const chs = [7,8,9].flatMap(g=>CURR[g].ch.map(([id])=>id)).map(id=>{ const g=grades.filter(x=>x.chapterId===id); return g.length?{id,avg:g.reduce((a,x)=>a+ +x.score,0)/g.length}:null; }).filter(Boolean);
+  return {title:'گزارش‌ها', body:`<div class="card"><div class="ct">👥 عملکرد دانش‌آموزان</div>${rows.length?`<div class="tw"><table class="tbl"><thead><tr><th>نام</th><th>پایه</th><th>میانگین</th><th>آزمون</th><th>XP</th></tr></thead><tbody>
+    ${rows.map(r=>`<tr><td><b>${esc(r.s.fullName)}</b></td><td>${fmt(r.s.grade)}</td><td>${r.avg==null?'—':gradePill(r.avg.toFixed(1))}</td><td>${fmt(r.q)}</td><td>${fmt(r.xp)}</td></tr>`).join('')}</tbody></table></div>`:'<div class="empty"><div class="ei">📭</div><p>دانش‌آموزی نیست</p></div>'}</div>
+    <div class="card"><div class="ct">📚 میانگین هر فصل</div>${chs.map(c=>`<div class="cbar"><div class="cbh"><span>${esc(chT(c.id))}</span><span>${fmt(c.avg.toFixed(1))}/۲۰</span></div><div class="cbt"><div class="cbf" style="width:${c.avg/20*100}%"></div></div></div>`).join('')||'<div class="empty"><p>هنوز نمره‌ای ثبت نشده</p></div>'}</div>`};
+};
+
+/* === BOOT === */
+document.addEventListener('click', e => { if(!e.target.closest('#sidebar,.mtg')) closeSidebar(); });
+(async () => {
+  try{ const t = localStorage.getItem('theme'); if(t) document.documentElement.dataset.theme = t; }catch(e){}
+  try{
+    ST.user = await AUTH.current();
+    if(ST.user?.role==='student'){ await checkMissions(ST.user.id); await checkBadges(ST.user.id); }
+    await render();
+  }catch(e){ console.error(e); showError(e.message||String(e), e.stack); }
+})();
+</script>
+</body>
+</html>
